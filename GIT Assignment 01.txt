@@ -1,0 +1,849 @@
+1. Create a remote "repository" with project name cloudethix_git_yourname. Create
+one file named demo.txt in the master branch of the remote repository. Once a
+file is created , clone the repository locally. On the local repository create 3
+branches: feature/login and feature/mainline, release. Add login.txt file to
+feature/login branch and push that branch to remote repository. Create PR and
+approve the PR and then merge the feature/login branch to the remote master
+branch.
+
+➜  ~ mkdir Assignment01
+➜  ~ cd Assignment01
+➜  Assignment01 git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /root/Assignment01/.git/
+
+➜  Assignment01 git:(master) ls -la
+total 12
+drwxr-xr-x  3 root root 4096 Nov  6 13:01 .
+drwx------ 18 root root 4096 Nov  6 13:01 ..
+drwxr-xr-x  7 root root 4096 Nov  6 13:01 .git
+
+➜  Assignment01 git:(master) git clone git@github.com:Fardin31/cloudethix_git_fardin.git
+Cloning into 'cloudethix_git_fardin'...
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (9/9), done.
+
+➜  Assignment01 git:(master) ✗ cd cloudethix_git_fardin
+➜  cloudethix_git_fardin git:(master) ll
+total 4.0K
+-rw-r--r-- 1 root root 7 Nov  6 13:02 demo.txt
+➜  cloudethix_git_fardin git:(master) git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+➜  cloudethix_git_fardin git:(master) git branch feature/login
+➜  cloudethix_git_fardin git:(master) git branch -l
+➜  cloudethix_git_fardin git:(master) git branch feature/mainline
+➜  cloudethix_git_fardin git:(master) git branch release
+➜  cloudethix_git_fardin git:(master) git branch -l
+➜  cloudethix_git_fardin git:(master) git checkout feature/login
+Switched to branch 'feature/login'
+➜  cloudethix_git_fardin git:(feature/login) git status
+On branch feature/login
+nothing to commit, working tree clean
+➜  cloudethix_git_fardin git:(feature/login) echo "this is login.txt file">login.txt
+➜  cloudethix_git_fardin git:(feature/login) ✗ git add login.txt
+➜  cloudethix_git_fardin git:(feature/login) ✗
+➜  cloudethix_git_fardin git:(feature/login) ✗
+➜  cloudethix_git_fardin git:(feature/login) ✗ git status
+On branch feature/login
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   login.txt
+
+➜  cloudethix_git_fardin git:(feature/login) ✗ git commit -m "login.txt file is added in feature/login"
+[feature/login a24f01d] login.txt file is added in feature/login
+ 1 file changed, 1 insertion(+)
+ create mode 100644 login.txt
+➜  cloudethix_git_fardin git:(feature/login) git status
+On branch feature/login
+nothing to commit, working tree clean
+➜  cloudethix_git_fardin git:(feature/login)
+➜  cloudethix_git_fardin git:(feature/login)
+
+➜  cloudethix_git_fardin git:(feature/login) git remote add origin git@github.com:Fardin31/cloudethix_git_fardin.git
+error: remote origin already exists.
+
+➜  cloudethix_git_fardin git:(feature/login) git remote -v
+origin  git@github.com:Fardin31/cloudethix_git_fardin.git (fetch)
+origin  git@github.com:Fardin31/cloudethix_git_fardin.git (push)
+
+➜  cloudethix_git_fardin git:(feature/login) git push -u origin feature/login
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 314 bytes | 314.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'feature/login' on GitHub by visiting:
+remote:      https://github.com/Fardin31/cloudethix_git_fardin/pull/new/feature/login
+remote:
+To github.com:Fardin31/cloudethix_git_fardin.git
+ * [new branch]      feature/login -> feature/login
+Branch 'feature/login' set up to track remote branch 'feature/login' from 'origin'.
+
+===================================================================================================
+
+2. Add files to the feature/mainline branch to local repo and push that branch to
+remote. Then add some files to the feature/mainline remote branch from the UI.
+Then fetch the latest changes on local feature/mainline with Fetch and Pull
+command.
+
+➜  cloudethix_git_fardin git:(feature/login) git checkout feature/mainline
+Switched to branch 'feature/mainline'
+➜  cloudethix_git_fardin git:(feature/mainline) ll
+total 4.0K
+-rw-r--r-- 1 root root 7 Nov  6 13:02 demo.txt
+➜  cloudethix_git_fardin git:(feature/mainline) echo "this is mainline line file">mainline.txt
+➜  cloudethix_git_fardin git:(feature/mainline) ✗ ll
+total 8.0K
+-rw-r--r-- 1 root root  7 Nov  6 13:02 demo.txt
+-rw-r--r-- 1 root root 27 Nov  6 13:29 mainline.txt
+
+
+➜  cloudethix_git_fardin git:(feature/mainline) ✗ git status
+On branch feature/mainline
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        mainline.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  cloudethix_git_fardin git:(feature/mainline) ✗ git add .
+
+
+➜  cloudethix_git_fardin git:(feature/mainline) ✗ git commit -m "mainline.txt file is added in feature/mainline branch"
+[feature/mainline 554f80e] mainline.txt file is added in feature/mainline branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 mainline.txt
+ 
+ 
+➜  cloudethix_git_fardin git:(feature/mainline) git push -u origin feature/mainline
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 328 bytes | 328.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'feature/mainline' on GitHub by visiting:
+remote:      https://github.com/Fardin31/cloudethix_git_fardin/pull/new/feature/mainline
+remote:
+To github.com:Fardin31/cloudethix_git_fardin.git
+ * [new branch]      feature/mainline -> feature/mainline
+Branch 'feature/mainline' set up to track remote branch 'feature/mainline' from 'origin'.
+➜  cloudethix_git_fardin git:(feature/mainline) git remote -v
+origin  git@github.com:Fardin31/cloudethix_git_fardin.git (fetch)
+origin  git@github.com:Fardin31/cloudethix_git_fardin.git (push)
+
+
+➜  cloudethix_git_fardin git:(feature/mainline)  git pull origin feature/mainline
+From github.com:Fardin31/cloudethix_git_fardin
+ * branch            feature/mainline -> FETCH_HEAD
+Updating 554f80e..33e6fd3
+Fast-forward
+ test01.txt | 1 +
+ test02.txt | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 test01.txt
+ create mode 100644 test02.txt
+ 
+ 
+➜  cloudethix_git_fardin git:(feature/mainline) ll
+total 16K
+-rw-r--r-- 1 root root  7 Nov  6 13:02 demo.txt
+-rw-r--r-- 1 root root 27 Nov  6 13:29 mainline.txt
+-rw-r--r-- 1 root root 29 Nov  6 13:48 test01.txt
+-rw-r--r-- 1 root root 34 Nov  6 13:48 test02.txt
+
+====================================================================================================
+3. Fork below public repository to your account. Then clone the repository locally.
+Create 2 branches cloud_dev01. Then add cloud_dev02 to that repository locally
+and hello.txt , moto.txt and world.txt to one branch and add another 3 files to
+another branch. Then push cloud_dev02 branch to the Forked repository on the
+remote.
+https://github.com/ripienaar/free-for-dev
+
+➜  Assignment01 git:(master) ✗ git clone git@github.com:Fardin31/free-for-dev.git
+Cloning into 'free-for-dev'...
+remote: Enumerating objects: 12865, done.
+remote: Counting objects: 100% (40/40), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 12865 (delta 22), reused 35 (delta 20), pack-reused 12825
+Receiving objects: 100% (12865/12865), 7.01 MiB | 98.00 KiB/s, done.
+Resolving deltas: 100% (6675/6675), done.
+➜  Assignment01 git:(master) ✗ ll
+total 8.0K
+drwxr-xr-x 3 root root 4.0K Nov  6 13:48 cloudethix_git_fardin
+drwxr-xr-x 4 root root 4.0K Nov  6 14:03 free-for-dev
+➜  Assignment01 git:(master) ✗ cd free-for-dev
+➜  free-for-dev git:(master) git branch cloud_dev01
+➜  free-for-dev git:(master) git branch
+➜  free-for-dev git:(master) git branch cloud_dev02
+➜  free-for-dev git:(master) git checkout cloud_dev01
+Switched to branch 'cloud_dev01'
+➜  free-for-dev git:(cloud_dev01) touch hello.txt
+➜  free-for-dev git:(cloud_dev01) ✗ touch moto.txt
+➜  free-for-dev git:(cloud_dev01) ✗ touch world.txt
+➜  free-for-dev git:(cloud_dev01) ✗ ll
+total 272K
+-rw-r--r-- 1 root root   12 Nov  6 14:03 CNAME
+-rw-r--r-- 1 root root 258K Nov  6 14:03 README.md
+-rw-r--r-- 1 root root    0 Nov  6 14:06 hello.txt
+-rw-r--r-- 1 root root 3.5K Nov  6 14:03 index.html
+-rw-r--r-- 1 root root  768 Nov  6 14:03 logo.webp
+-rw-r--r-- 1 root root    0 Nov  6 14:07 moto.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:07 world.txt
+➜  free-for-dev git:(cloud_dev01) ✗ git status
+On branch cloud_dev01
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.txt
+        moto.txt
+        world.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  free-for-dev git:(cloud_dev01) ✗ git add .
+
+➜  free-for-dev git:(cloud_dev01) ✗ git commit -m "hello,moto,world.txt files added in cloud_dev01 branch"
+[cloud_dev01 01ea2ec] hello,moto,world.txt files added in cloud_dev01 branch
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hello.txt
+ create mode 100644 moto.txt
+ create mode 100644 world.txt
+➜  free-for-dev git:(cloud_dev01) git branch --help
+➜  free-for-dev git:(cloud_dev01) git branch -m cloud_dev01 cloud_dev02
+fatal: A branch named 'cloud_dev02' already exists.
+
+➜  free-for-dev git:(cloud_dev01) git branch -d  cloud_dev02
+Deleted branch cloud_dev02 (was bb3bd2b).
+➜  free-for-dev git:(cloud_dev01) git branch -m cloud_dev01 cloud_dev02
+
+➜  free-for-dev git:(cloud_dev02) ll
+total 272K
+-rw-r--r-- 1 root root   12 Nov  6 14:03 CNAME
+-rw-r--r-- 1 root root 258K Nov  6 14:03 README.md
+-rw-r--r-- 1 root root    0 Nov  6 14:06 hello.txt
+-rw-r--r-- 1 root root 3.5K Nov  6 14:03 index.html
+-rw-r--r-- 1 root root  768 Nov  6 14:03 logo.webp
+-rw-r--r-- 1 root root    0 Nov  6 14:07 moto.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:07 world.txt
+➜  free-for-dev git:(cloud_dev02)  git commit --amend -m "hello,moto,world.txt files added in cloud_dev02 branch"
+[cloud_dev02 7c74a5a] hello,moto,world.txt files added in cloud_dev02 branch
+ Date: Mon Nov 6 14:09:43 2023 +0530
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hello.txt
+ create mode 100644 moto.txt
+ create mode 100644 world.txt
+➜  free-for-dev git:(cloud_dev02) git branch
+➜  free-for-dev git:(cloud_dev02) git branch cloud_dev01
+➜  free-for-dev git:(cloud_dev02) git checkout cloud_dev01
+Switched to branch 'cloud_dev01'
+➜  free-for-dev git:(cloud_dev01) touch proud{01..03}.txt
+➜  free-for-dev git:(cloud_dev01) ✗ ll
+total 272K
+-rw-r--r-- 1 root root   12 Nov  6 14:03 CNAME
+-rw-r--r-- 1 root root 258K Nov  6 14:03 README.md
+-rw-r--r-- 1 root root    0 Nov  6 14:06 hello.txt
+-rw-r--r-- 1 root root 3.5K Nov  6 14:03 index.html
+-rw-r--r-- 1 root root  768 Nov  6 14:03 logo.webp
+-rw-r--r-- 1 root root    0 Nov  6 14:07 moto.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud01.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud02.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud03.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:07 world.txt
+
+➜  free-for-dev git:(cloud_dev01) ✗ ll
+total 272K
+-rw-r--r-- 1 root root   12 Nov  6 14:03 CNAME
+-rw-r--r-- 1 root root 258K Nov  6 14:03 README.md
+-rw-r--r-- 1 root root    0 Nov  6 14:06 hello.txt
+-rw-r--r-- 1 root root 3.5K Nov  6 14:03 index.html
+-rw-r--r-- 1 root root  768 Nov  6 14:03 logo.webp
+-rw-r--r-- 1 root root    0 Nov  6 14:07 moto.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud01.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud02.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud03.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:07 world.txt
+
+➜  free-for-dev git:(cloud_dev01) ✗ git checkout cloud_dev02
+Switched to branch 'cloud_dev02'
+
+➜  free-for-dev git:(cloud_dev02) ✗ ll
+total 272K
+-rw-r--r-- 1 root root   12 Nov  6 14:03 CNAME
+-rw-r--r-- 1 root root 258K Nov  6 14:03 README.md
+-rw-r--r-- 1 root root    0 Nov  6 14:06 hello.txt
+-rw-r--r-- 1 root root 3.5K Nov  6 14:03 index.html
+-rw-r--r-- 1 root root  768 Nov  6 14:03 logo.webp
+-rw-r--r-- 1 root root    0 Nov  6 14:07 moto.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud01.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud02.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud03.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:07 world.txt
+
+
+➜  free-for-dev git:(cloud_dev02) ✗ git push -u origin cloud_dev02
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 328 bytes | 328.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote:
+remote: Create a pull request for 'cloud_dev02' on GitHub by visiting:
+remote:      https://github.com/Fardin31/free-for-dev/pull/new/cloud_dev02
+remote:
+To github.com:Fardin31/free-for-dev.git
+ * [new branch]      cloud_dev02 -> cloud_dev02
+Branch 'cloud_dev02' set up to track remote branch 'cloud_dev02' from 'origin'.
+
+➜  free-for-dev git:(cloud_dev02) ✗ ll
+total 272K
+-rw-r--r-- 1 root root   12 Nov  6 14:03 CNAME
+-rw-r--r-- 1 root root 258K Nov  6 14:03 README.md
+-rw-r--r-- 1 root root    0 Nov  6 14:06 hello.txt
+-rw-r--r-- 1 root root 3.5K Nov  6 14:03 index.html
+-rw-r--r-- 1 root root  768 Nov  6 14:03 logo.webp
+-rw-r--r-- 1 root root    0 Nov  6 14:07 moto.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud01.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud02.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:18 proud03.txt
+-rw-r--r-- 1 root root    0 Nov  6 14:07 world.txt
+➜  free-for-dev git:(cloud_dev02) ✗
+==================================================================================================
+
+4. Create a remote repository merge_confilct_demo. Add some files in the remote
+master branch. Clone the repository locally. Create 2 branches locally named
+demo/merge and demo/conflicts. Add a merge.txt file in both branches with some
+data like "Hello CloudEthiX…." And "Fello CloudEthiX…." respectively and
+commit. Then merge demo/conflicts branch to demo/merge branch and solve the
+merge conflicts.
+
+➜  merge_confilct_demo git:(master) git branch demo/merge
+➜  merge_confilct_demo git:(master) git branch  demo/conflicts
+➜  merge_confilct_demo git:(master) git branch
+➜  merge_confilct_demo git:(master) git checkout demo/merge
+Switched to branch 'demo/merge'
+➜  merge_confilct_demo git:(demo/merge) ll
+total 8.0K
+-rw-r--r-- 1 root root 25 Nov  6 15:09 cloud.txt
+-rw-r--r-- 1 root root 22 Nov  6 15:09 cloud1.txt
+
+➜  merge_confilct_demo git:(demo/conflicts) ✗ echo "Fello CloudEthiX…."> merge.txt
+➜  merge_confilct_demo git:(demo/conflicts) ✗ cat merge.txt
+Fello CloudEthiX….
+➜  merge_confilct_demo git:(demo/conflicts) ✗ git merge demo/merge
+Already up to date.
+➜  merge_confilct_demo git:(demo/conflicts) ✗ git status
+On branch demo/conflicts
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        merge.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  merge_confilct_demo git:(demo/conflicts) ✗ git add .
+➜  merge_confilct_demo git:(demo/conflicts) ✗ git commit -m "merge.txt is added demo/conflicts"
+[demo/conflicts 90fba2d] merge.txt is added demo/conflicts
+ 1 file changed, 1 insertion(+)
+ create mode 100644 merge.txt
+➜  merge_confilct_demo git:(demo/conflicts) git checkout demo/merge
+Switched to branch 'demo/merge'
+➜  merge_confilct_demo git:(demo/merge) ll
+total 8.0K
+
+-rw-r--r-- 1 root root 25 Nov  6 15:09 cloud.txt
+-rw-r--r-- 1 root root 22 Nov  6 15:09 cloud1.txt
+➜  merge_confilct_demo git:(demo/merge) echo "Hello CloudEthiX….">merge.txt
+➜  merge_confilct_demo git:(demo/merge) ✗ ll
+total 12K
+-rw-r--r-- 1 root root 25 Nov  6 15:09 cloud.txt
+-rw-r--r-- 1 root root 22 Nov  6 15:09 cloud1.txt
+-rw-r--r-- 1 root root 21 Nov  6 16:12 merge.txt
+➜  merge_confilct_demo git:(demo/merge) ✗ git status
+On branch demo/merge
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        merge.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  merge_confilct_demo git:(demo/merge) ✗ git add .
+
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  merge_confilct_demo git:(demo/merge) ✗ git add .
+➜  merge_confilct_demo git:(demo/merge) ✗ git commit -m "merge.txt is added to the demo/merge branch"
+[demo/merge 7a21e1f] merge.txt is added to the demo/merge branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 merge.txt
+➜  merge_confilct_demo git:(demo/merge) git checkout demo/conflicts
+Switched to branch 'demo/conflicts'
+➜  merge_confilct_demo git:(demo/conflicts) ll
+total 12K
+-rw-r--r-- 1 root root 25 Nov  6 15:09 cloud.txt
+-rw-r--r-- 1 root root 22 Nov  6 15:09 cloud1.txt
+-rw-r--r-- 1 root root 21 Nov  6 16:13 merge.txt
+➜  merge_confilct_demo git:(demo/conflicts) git merge demo/merge
+Auto-merging merge.txt
+CONFLICT (add/add): Merge conflict in merge.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+➜  merge_confilct_demo git:(demo/conflicts) ✗ ll
+total 12K
+-rw-r--r-- 1 root root 25 Nov  6 15:09 cloud.txt
+-rw-r--r-- 1 root root 22 Nov  6 15:09 cloud1.txt
+-rw-r--r-- 1 root root 82 Nov  6 16:13 merge.txt
+➜  merge_confilct_demo git:(demo/conflicts) ✗  git status
+On branch demo/conflicts
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      merge.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  merge_confilct_demo git:(demo/conflicts) ✗ cat merge.txt
+<<<<<<< HEAD
+Fello CloudEthiX….
+=======
+Hello CloudEthiX….
+>>>>>>> demo/merge
+>>>>>>> demo/merge
+➜  merge_confilct_demo git:(demo/conflicts) ✗ vim merge.txt
+➜  merge_confilct_demo git:(demo/conflicts) ✗ git merge demo/merge
+error: Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+➜  merge_confilct_demo git:(demo/conflicts) ✗ cat merge.txt
+Hello CloudEthiX….
+
+➜  merge_confilct_demo git:(demo/conflicts) ✗ vim merge.txt
+➜  merge_confilct_demo git:(demo/conflicts) ✗ git merge demo/merge
+error: Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+➜  merge_confilct_demo git:(demo/conflicts) ✗ git status
+On branch demo/conflicts
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      merge.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+➜  merge_confilct_demo git:(demo/conflicts) ✗ git add merge.txt
+➜  merge_confilct_demo git:(demo/conflicts) ✗ git commit -m "merge conflict solved in merge.txt file"
+[demo/conflicts b0973ea] merge conflict solved in merge.txt file
+➜  merge_confilct_demo git:(demo/conflicts) git status
+On branch demo/conflicts
+nothing to commit, working tree clean
+➜  merge_confilct_demo git:(demo/conflicts) git merge demo/merge
+Already up to date.
+➜  merge_confilct_demo git:(demo/conflicts)
+===========================================================================================
+
+6. Fetch latest changes from master branch of remote forked repository to local
+master branch. Then merge forked remote master branch with local master
+branch. Check If all the latest files are there. Then checkout to local cloud_dev03
+branch locally. Then Pull latest changes from the remote master branch.
+
+➜  free-for-dev git:(master) git pull origin master
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (1/1), 625 bytes | 62.00 KiB/s, done.
+From github.com:Fardin31/free-for-dev
+ * branch            master     -> FETCH_HEAD
+   bb3bd2b..fe8084b  master     -> origin/master
+Updating bb3bd2b..fe8084b
+Fast-forward
+ hello.txt   | 0
+ moto.txt    | 0
+ proud01.txt | 0
+ proud02.txt | 0
+ proud03.txt | 0
+ world.txt   | 0
+ 6 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hello.txt
+ create mode 100644 moto.txt
+ create mode 100644 proud01.txt
+ create mode 100644 proud02.txt
+ create mode 100644 proud03.txt
+ create mode 100644 world.txt
+➜  free-for-dev git:(master) ll
+total 272K
+-rw-r--r-- 1 root root   12 Nov  6 14:03 CNAME
+-rw-r--r-- 1 root root 258K Nov  6 14:03 README.md
+-rw-r--r-- 1 root root    0 Nov  6 17:51 hello.txt
+-rw-r--r-- 1 root root 3.5K Nov  6 14:03 index.html
+-rw-r--r-- 1 root root  768 Nov  6 14:03 logo.webp
+-rw-r--r-- 1 root root    0 Nov  6 17:51 moto.txt
+-rw-r--r-- 1 root root    0 Nov  6 17:51 proud01.txt
+-rw-r--r-- 1 root root    0 Nov  6 17:51 proud02.txt
+-rw-r--r-- 1 root root    0 Nov  6 17:51 proud03.txt
+-rw-r--r-- 1 root root    0 Nov  6 17:51 world.txt
+➜  free-for-dev git:(master) git branch
+➜  free-for-dev git:(master) git branch cloud_dev03
+➜  free-for-dev git:(master) git checkout cloud_dev03
+Switched to branch 'cloud_dev03'
+➜  free-for-dev git:(cloud_dev03) git pull origin master
+From github.com:Fardin31/free-for-dev
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+➜  free-for-dev git:(cloud_dev03) ll
+total 272K
+-rw-r--r-- 1 root root   12 Nov  6 14:03 CNAME
+-rw-r--r-- 1 root root 258K Nov  6 14:03 README.md
+-rw-r--r-- 1 root root    0 Nov  6 17:51 hello.txt
+-rw-r--r-- 1 root root 3.5K Nov  6 14:03 index.html
+-rw-r--r-- 1 root root  768 Nov  6 14:03 logo.webp
+-rw-r--r-- 1 root root    0 Nov  6 17:51 moto.txt
+-rw-r--r-- 1 root root    0 Nov  6 17:51 proud01.txt
+-rw-r--r-- 1 root root    0 Nov  6 17:51 proud02.txt
+-rw-r--r-- 1 root root    0 Nov  6 17:51 proud03.txt
+-rw-r--r-- 1 root root    0 Nov  6 17:51 world.txt
+================================================================================
+
+7. Checkout to the cloud_dev01 branch locally and rebase the remote master
+branch of the forked repository.
+
+➜  free-for-dev git:(cloud_dev01) git rebase master
+Successfully rebased and updated refs/heads/cloud_dev01.
+➜  free-for-dev git:(cloud_dev01) ll
+total 272K
+-rw-r--r-- 1 root root   12 Nov  6 14:03 CNAME
+-rw-r--r-- 1 root root 258K Nov  6 14:03 README.md
+-rw-r--r-- 1 root root    0 Nov  6 17:51 hello.txt
+-rw-r--r-- 1 root root 3.5K Nov  6 14:03 index.html
+-rw-r--r-- 1 root root  768 Nov  6 14:03 logo.webp
+-rw-r--r-- 1 root root    0 Nov  6 17:51 moto.txt
+-rw-r--r-- 1 root root    0 Nov  6 18:03 proud01.txt
+-rw-r--r-- 1 root root    0 Nov  6 18:03 proud02.txt
+-rw-r--r-- 1 root root    0 Nov  6 18:03 proud03.txt
+-rw-r--r-- 1 root root    0 Nov  6 17:51 world.txt
+
+========================================================================================
+
+8. Create one repository locally. Commit any 3 files to the local repository. And the
+revert back the commits.
+
+➜  Q08.txt git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /root/Q08.txt/.git/
+➜  Q08 git:(master) touch abc{1..3}.txt
+➜  Q08 git:(master) ✗ ll
+total 0
+-rw-r--r-- 1 root root 0 Nov  6 18:12 abc1.txt
+-rw-r--r-- 1 root root 0 Nov  6 18:12 abc2.txt
+-rw-r--r-- 1 root root 0 Nov  6 18:12 abc3.txt
+➜  Q08 git:(master) ✗ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        abc1.txt
+        abc2.txt
+        abc3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  Q08.txt git:(master) ✗ git add .
+➜  Q08.txt git:(master) ✗ git commit -m ".txt file is added master branch"
+[master (root-commit) 8c1ed60] .txt file is added master branch
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 abc1.txt
+ create mode 100644 abc2.txt
+ create mode 100644 abc3.txt
+➜  Q08.txt git:(master) git log
+➜  Q08.txt git:(master) git log -a
+➜  Q08.txt git:(master) git log --oneline
+➜  Q08.txt git:(master) git revert --no-edit
+usage: git revert [<options>] <commit-ish>...
+   or: git revert <subcommand>
+
+    --quit                end revert or cherry-pick sequence
+    --continue            resume revert or cherry-pick sequence
+    --abort               cancel revert or cherry-pick sequence
+    --skip                skip current commit and continue
+    --cleanup <mode>      how to strip spaces and #comments from message
+    -n, --no-commit       don't automatically commit
+    -e, --edit            edit the commit message
+    -s, --signoff         add a Signed-off-by trailer
+    -m, --mainline <parent-number>
+                          select mainline parent
+    --rerere-autoupdate   update the index with reused conflict resolution if possible
+    --strategy <strategy>
+                          merge strategy
+    -X, --strategy-option <option>
+                          option for merge strategy
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+➜  Q08.txt git:(master)  git log --oneline
+➜  Q08.txt git:(master) git revert --no-edit 8c1ed60
+[master 3e786d6] Revert ".txt file is added master branch"
+ Date: Mon Nov 6 18:21:15 2023 +0530
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 abc1.txt
+ delete mode 100644 abc2.txt
+ delete mode 100644 abc3.txt
+ ================================================================================================
+ 9. Create one local repository. commit some files to the local master branch.
+Checkout to master_02 branch. Create 2 more files. Add those to the staging
+area. Create stash area and those files. Then list and delete the stash.
+
+➜  Q09 git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/fardin/Q09/.git/
+➜  Q09 git:(master) ls -la
+total 12
+drwxr-xr-x 3 fardin fardin 4096 Nov  7 10:38 .
+drwxr-x--- 6 fardin fardin 4096 Nov  7 10:39 ..
+drwxr-xr-x 7 fardin fardin 4096 Nov  7 10:38 .git
+➜  Q09 git:(master) touch test{1..3}.txt
+➜  Q09 git:(master) ✗ ll
+total 0
+-rw-r--r-- 1 fardin fardin 0 Nov  7 10:40 test1.txt
+-rw-r--r-- 1 fardin fardin 0 Nov  7 10:40 test2.txt
+-rw-r--r-- 1 fardin fardin 0 Nov  7 10:40 test3.txt
+➜  Q09 git:(master) ✗ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test1.txt
+        test2.txt
+        test3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  Q09 git:(master) ✗ git add .
+➜  Q09 git:(master) ✗ git commit -m "test1,2,3.txt file is added in master branch"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <fardin@HP.fardin>) not allowed
+➜  Q09 git:(master) ✗ ls -la
+total 12
+drwxr-xr-x 3 fardin fardin 4096 Nov  7 10:40 .
+drwxr-x--- 6 fardin fardin 4096 Nov  7 10:42 ..
+drwxr-xr-x 7 fardin fardin 4096 Nov  7 10:41 .git
+-rw-r--r-- 1 fardin fardin    0 Nov  7 10:40 test1.txt
+-rw-r--r-- 1 fardin fardin    0 Nov  7 10:40 test2.txt
+-rw-r--r-- 1 fardin fardin    0 Nov  7 10:40 test3.txt
+➜  Q09 git:(master) ✗ cd .git
+➜  .git git:(master) ll
+total 36K
+-rw-r--r-- 1 fardin fardin   23 Nov  7 10:38 HEAD
+drwxr-xr-x 2 fardin fardin 4.0K Nov  7 10:38 branches
+-rw-r--r-- 1 fardin fardin   92 Nov  7 10:38 config
+-rw-r--r-- 1 fardin fardin   73 Nov  7 10:38 description
+drwxr-xr-x 2 fardin fardin 4.0K Nov  7 10:38 hooks
+-rw-r--r-- 1 fardin fardin  281 Nov  7 10:41 index
+drwxr-xr-x 2 fardin fardin 4.0K Nov  7 10:38 info
+drwxr-xr-x 6 fardin fardin 4.0K Nov  7 10:41 objects
+drwxr-xr-x 4 fardin fardin 4.0K Nov  7 10:38 refs
+➜  .git git:(master) cat config
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+➜  .git git:(master) cd ..
+➜  Q09 git:(master) ✗ ll
+total 0
+-rw-r--r-- 1 fardin fardin 0 Nov  7 10:40 test1.txt
+-rw-r--r-- 1 fardin fardin 0 Nov  7 10:40 test2.txt
+-rw-r--r-- 1 fardin fardin 0 Nov  7 10:40 test3.txt
+➜  Q09 git:(master) ✗  git config --global user.name Fardin31
+➜  Q09 git:(master) ✗  git config --global user.email fardinpathan886@gmail.com
+➜  Q09 git:(master) ✗ git commit -m "test1,2,3.txt file is added in master branch"
+[master (root-commit) c491c38] test1,2,3.txt file is added in master branch
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test1.txt
+ create mode 100644 test2.txt
+ create mode 100644 test3.txt
+➜  Q09 git:(master) git branch master_02
+➜  Q09 git:(master) git checkout master_02
+Switched to branch 'master_02'
+➜  Q09 git:(master_02) touch test{4..5}.txt
+➜  Q09 git:(master_02) ✗ git status
+On branch master_02
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test4.txt
+        test5.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  Q09 git:(master_02) ✗
+➜  Q09 git:(master_02) ✗
+➜  Q09 git:(master_02) ✗ git add .
+➜  Q09 git:(master_02) ✗
+➜  Q09 git:(master_02) ✗
+➜  Q09 git:(master_02) ✗ git status
+On branch master_02
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   test4.txt
+        new file:   test5.txt
+
+➜  Q09 git:(master_02) ✗ git stash
+Saved working directory and index state WIP on master_02: c491c38 test1,2,3.txt file is added in master branch
+➜  Q09 git:(master_02) git stash list
+➜  Q09 git:(master_02)
+➜  Q09 git:(master_02)
+➜  Q09 git:(master_02) git stats pop
+git: 'stats' is not a git command. See 'git --help'.
+
+The most similar command is
+        status
+➜  Q09 git:(master_02) git status
+On branch master_02
+nothing to commit, working tree clean
+➜  Q09 git:(master_02) git stash show stash@{0}
+➜  Q09 git:(master_02)
+➜  Q09 git:(master_02)
+➜  Q09 git:(master_02) git stash clear
+➜  Q09 git:(master_02) git status
+On branch master_02
+nothing to commit, working tree clean
+➜  Q09 git:(master_02) ll
+total 0
+-rw-r--r-- 1 fardin fardin 0 Nov  7 10:40 test1.txt
+-rw-r--r-- 1 fardin fardin 0 Nov  7 10:40 test2.txt
+-rw-r--r-- 1 fardin fardin 0 Nov  7 10:40 test3.txt
+
+=================================================================================================
+10.Create a local repository, initialise it and create 3 branches: develop, hotfix and
+release. Checkout to hotfix branch and commit cloudethix.txt and once
+committed amend the commit message
+
+➜  practical git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/fardin/practical/.git/
+➜  practical git:(master) ls -la
+total 12
+drwxr-xr-x 3 fardin fardin 4096 Nov  7 11:11 .
+drwxr-x--- 8 fardin fardin 4096 Nov  7 11:12 ..
+drwxr-xr-x 7 fardin fardin 4096 Nov  7 11:11 .git
+➜  practical git:(master) touch readmi.txt
+➜  practical git:(master) ✗
+➜  practical git:(master) ✗
+➜  practical git:(master) ✗ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        readmi.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  practical git:(master) ✗ git add .
+➜  practical git:(master) ✗
+➜  practical git:(master) ✗
+➜  practical git:(master) ✗ git commit -m "readmi.txt file is added to the master branch"
+[master (root-commit) 27a4c7a] readmi.txt file is added to the master branch
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 readmi.txt
+➜  practical git:(master) git branch develop
+➜  practical git:(master) git branch hotfix
+➜  practical git:(master) git branch realese
+➜  practical git:(master)
+➜  practical git:(master) git checkout hotfix
+Switched to branch 'hotfix'
+➜  practical git:(hotfix) touch cloudethix.txt
+➜  practical git:(hotfix) ✗
+➜  practical git:(hotfix) ✗ git status
+On branch hotfix
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        cloudethix.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  practical git:(hotfix) ✗
+➜  practical git:(hotfix) ✗
+➜  practical git:(hotfix) ✗ git add .
+➜  practical git:(hotfix) ✗
+➜  practical git:(hotfix) ✗ git commit -m "cloudethix.txt file is added in hotf branch"
+[hotfix 57abc5a] cloudethix.txt file is added in hotf branch
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 cloudethix.txt
+➜  practical git:(hotfix) git log
+➜  practical git:(hotfix)
+➜  practical git:(hotfix) git commit -m --amend "cloudethix.txt file is added in hotfix branch"
+error: pathspec 'cloudethix.txt file is added in hotfix branch' did not match any file(s) known to git
+➜  practical git:(hotfix) git commit  --amend -m  "cloudethix.txt file is added in hotfix branch"
+[hotfix 06cc436] cloudethix.txt file is added in hotfix branch
+ Date: Tue Nov 7 11:16:09 2023 +0530
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 cloudethix.txt
+➜  practical git:(hotfix) git log --oneline
+=======================================================================================================
+========================================================================================================
+
+
+
+
+
+
+
